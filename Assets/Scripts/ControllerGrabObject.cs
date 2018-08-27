@@ -49,6 +49,7 @@ public class ControllerGrabObject : MonoBehaviour {
             Debug.Log("get food");
         }
 
+        Debug.Log(other.tag);
         if(other.tag == "Trap")
         {
             if(Controller.GetHairTriggerDown())

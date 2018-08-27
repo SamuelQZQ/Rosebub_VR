@@ -16,7 +16,6 @@ public class WolfAttack : MonoBehaviour {
 
         if (collision.collider.tag == "Hand")
         {
-            Debug.Log("hahahaha");
             GetComponent<Rigidbody>().AddForce(collision.relativeVelocity * power);
         }
     }

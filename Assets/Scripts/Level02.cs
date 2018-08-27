@@ -28,14 +28,19 @@ public class Level02 : MonoBehaviour {
     //{
     //    return instance;
     //}
-
+    public void destroyFood()
+    {
+        Destroy(food);
+    }
    
    
 	// Update is called once per frame
 	void Update () {
         if (pickUpFood)
         {
-            wolf.GetComponent<AnimalAIControl>().target = food.transform;
+            wolf.GetComponent<AnimalAIControl>().SetTarget(food.transform);
+            
         }
+        
 	}
 }

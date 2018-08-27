@@ -39,7 +39,7 @@ public class Level02 : MonoBehaviour {
         if (pickUpFood)
         {
             wolf.GetComponent<AnimalAIControl>().SetTarget(food.transform);
-            GameObject.FindGameObjectWithTag("Wolf").SetActive(true);
+            wolf.SetActive(true);
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }
         

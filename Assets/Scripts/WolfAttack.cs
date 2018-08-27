@@ -5,32 +5,30 @@ using MalbersAnimations;
 
 public class WolfAttack : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     private void OnCollisionStay(Collision collision)
     {
-        WolfController wolf = collision.collider.GetComponentInParent<WolfController>();
-        if(wolf.tag == "Wolf")
+        if (collision.collider.tag == "Player")
         {
-            wolf.Attack1 = true;
+            WolfController wolf = GetComponent<WolfController>();
+            wolf.Attack1 = true;    
+        }
+
+        if (collision.collider.tag == "Hand")
+        {
+            GetComponent<Rigidbody>().AddForce(collision.relativeVelocity);
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        WolfController wolf = collision.collider.GetComponentInParent<WolfController>();
-        if (wolf.tag == "Wolf")
+        if (collision.collider.tag == "Player")
         {
+            WolfController wolf = GetComponent<WolfController>();
             wolf.Attack1 = false;
         }
+
+
     }
 
 }

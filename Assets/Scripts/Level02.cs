@@ -4,9 +4,9 @@ using UnityEngine;
 using MalbersAnimations;
 
 public class Level02 : MonoBehaviour {
-
+    public GameObject player;
     public GameObject playerHand;
-    public GameObject[] foods;
+    public GameObject food;
     public GameObject wolf;
     public bool pickUpFood;
     public bool wolfEat;
@@ -19,10 +19,10 @@ public class Level02 : MonoBehaviour {
         pickUpFood = false;
         wolfEat = false;
         //wolf = GameObject.FindGameObjectWithTag("Wolf");
-        foods = GameObject.FindGameObjectsWithTag("Food");
 	}
 	
-    public void getFood(){
+    public void getFood(GameObject foo){
+        food = foo;
         pickUpFood = true;
     }
     //static public Level02 GetInstance()
@@ -31,16 +31,16 @@ public class Level02 : MonoBehaviour {
     //}
     public void destroyFood()
     {
-        Destroy(foods[num]);
-        num++;
+        Destroy(food);
+        wolf.GetComponent<AnimalAIControl>().SetTarget(player.transform);
     }
    
    
 	// Update is called once per frame
 	void Update () {
-        if (pickUpFood && num<7)
+        if (pickUpFood )
         {
-            wolf.GetComponent<AnimalAIControl>().SetTarget(foods[num].transform);
+            wolf.GetComponent<AnimalAIControl>().SetTarget(food.transform);
             wolf.SetActive(true);
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }

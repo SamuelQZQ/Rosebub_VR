@@ -56,9 +56,9 @@ public class ControllerGrabObject : MonoBehaviour {
     {
         SetCollidingObject(other);
         Debug.Log("get");
-        if(other.name == "Food")
+        if(other.tag == "Food" && Controller.GetHairTriggerDown())
         {
-            GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood();
+            GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood(other.gameObject);
             Debug.Log("get food");
         }
 

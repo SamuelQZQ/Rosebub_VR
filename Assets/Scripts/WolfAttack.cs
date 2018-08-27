@@ -5,7 +5,7 @@ using MalbersAnimations;
 
 public class WolfAttack : MonoBehaviour {
 
-
+    public float power;
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.tag == "Player")
@@ -16,7 +16,8 @@ public class WolfAttack : MonoBehaviour {
 
         if (collision.collider.tag == "Hand")
         {
-            GetComponent<Rigidbody>().AddForce(collision.relativeVelocity);
+            Debug.Log("hahahaha");
+            GetComponent<Rigidbody>().AddForce(collision.relativeVelocity * power);
         }
     }
 

@@ -9,6 +9,8 @@ TagManager:
   - Water
   - Wolf
   - Hand
+  - control
+  - Food
   layers:
   - Default
   - TransparentFX

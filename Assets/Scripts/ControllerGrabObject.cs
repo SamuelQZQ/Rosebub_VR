@@ -24,6 +24,7 @@ public class ControllerGrabObject : MonoBehaviour {
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
         control = GameObject.FindGameObjectWithTag("control");
+        Food = GameObject.FindGameObjectWithTag("Food");
             
     }
     private void SetCollidingObject(Collider col)
@@ -41,6 +42,7 @@ public class ControllerGrabObject : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         SetCollidingObject(other);
+        Debug.Log("get");
         if(other == Food)
         {
             GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood();

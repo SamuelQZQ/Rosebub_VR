@@ -43,7 +43,7 @@ public class ControllerGrabObject : MonoBehaviour {
     float attackedTime = 0;
     private void LateUpdate()
     {
-        if (attacked && Time.time - attackedTime > 5)
+        if (attacked && Time.time - attackedTime >= 1)
         {
             attacked = false;
             GameObject.Find("Wolf Cub").GetComponent<WolfController>().Stun = false;
@@ -70,14 +70,16 @@ public class ControllerGrabObject : MonoBehaviour {
             }
         }
 
-        if(other.GetComponent<WolfController>())
+        if(other.GetComponentInParent<WolfController>())
         {
-            other.GetComponent<WolfController>().Stun = true;
+            Debug.Log("Attcked");
+            other.GetComponentInParent<WolfController>().Stun = true;
             attackedTime = Time.time;
             attacked = true;
         }
 
     }
+
 
     // 2
     public void OnTriggerStay(Collider other)

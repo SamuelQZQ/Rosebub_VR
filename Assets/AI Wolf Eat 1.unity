@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.48783952, g: 0.5932785, b: 0.6573297, a: 1}
+  m_IndirectSpecularColor: {r: 0.48838013, g: 0.5939208, b: 0.65761596, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2327,49 +2327,87 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1994809279}
     m_Modifications:
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalPosition.x
       value: -17.938137
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalPosition.y
       value: -1.0180109
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalPosition.z
       value: -58.517574
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    - target: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114503583519243750, guid: 83729acd1c4f7624dbdfe00a7e02851a,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1294931285}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 83729acd1c4f7624dbdfe00a7e02851a, type: 2}
+    m_RemovedComponents:
+    - {fileID: 114455458954120814, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: b1f8f0732be7c41409a06589a25d3388, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2049979093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1037916120522088, guid: b1f8f0732be7c41409a06589a25d3388,
+    type: 2}
+  m_PrefabInternal: {fileID: 2049979092}
+--- !u!195 &2049979094
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2049979093}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 0.8
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1.8
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.7
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 3
+--- !u!114 &2049979095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2049979093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4de5b350dd00334bb02dde39da7027c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1294931285}
+  AutoSpeed: 1
+  ToTrot: 3
+  ToRun: 5
+  debug: 0
 --- !u!4 &2049979105 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4870062367299508, guid: 83729acd1c4f7624dbdfe00a7e02851a,
+  m_CorrespondingSourceObject: {fileID: 4148429690873860, guid: b1f8f0732be7c41409a06589a25d3388,
     type: 2}
   m_PrefabInternal: {fileID: 2049979092}
 --- !u!1001 &2111745389

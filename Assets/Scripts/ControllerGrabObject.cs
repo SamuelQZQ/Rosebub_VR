@@ -43,7 +43,7 @@ public class ControllerGrabObject : MonoBehaviour {
     {
         SetCollidingObject(other);
         Debug.Log("get");
-        if(other == Food)
+        if(other.name == "Food")
         {
             GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood();
             Debug.Log("get food");

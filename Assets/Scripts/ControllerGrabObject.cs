@@ -5,6 +5,9 @@ using UnityEngine;
 public class ControllerGrabObject : MonoBehaviour {
 
     // Use this for initialization
+    public GameObject Food;
+    public GameObject control;
+
     private SteamVR_TrackedObject trackedObj;
 
     // 1
@@ -20,6 +23,8 @@ public class ControllerGrabObject : MonoBehaviour {
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
+        control = GameObject.FindGameObjectWithTag("control");
+            
     }
     private void SetCollidingObject(Collider col)
     {
@@ -36,12 +41,18 @@ public class ControllerGrabObject : MonoBehaviour {
     public void OnTriggerEnter(Collider other)
     {
         SetCollidingObject(other);
+        if(other == Food)
+        {
+            GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood();
+            Debug.Log("get food");
+        }
     }
 
     // 2
     public void OnTriggerStay(Collider other)
     {
         SetCollidingObject(other);
+
     }
 
     // 3
@@ -75,6 +86,7 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private void ReleaseObject()
     {
+        
         // 1
         if (GetComponent<FixedJoint>())
         {

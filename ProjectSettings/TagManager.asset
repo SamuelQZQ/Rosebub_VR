@@ -8,6 +8,8 @@ TagManager:
   - FxTemporaire
   - Water
   - Wolf
+  - control
+  - Food
   layers:
   - Default
   - TransparentFX

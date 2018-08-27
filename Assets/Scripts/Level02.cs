@@ -33,6 +33,7 @@ public class Level02 : MonoBehaviour {
     {
         Destroy(food);
         wolf.GetComponent<AnimalAIControl>().SetTarget(player.transform);
+        pickUpFood = false;
     }
    
    
@@ -42,6 +43,7 @@ public class Level02 : MonoBehaviour {
         {
             wolf.GetComponent<AnimalAIControl>().SetTarget(food.transform);
             wolf.SetActive(true);
+            
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }
         

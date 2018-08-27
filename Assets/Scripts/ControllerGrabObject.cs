@@ -38,6 +38,19 @@ public class ControllerGrabObject : MonoBehaviour {
         collidingObject = col.gameObject;
     }
 
+
+    bool attacked = false;
+    float attackedTime = 0;
+    private void LateUpdate()
+    {
+        if (attacked && Time.time - attackedTime > 5)
+        {
+            attacked = false;
+            GameObject.Find("Wolf Cub").GetComponent<WolfController>().Stun = false;
+        }
+     
+    }
+
     // 1
     public void OnTriggerEnter(Collider other)
     {
@@ -49,7 +62,6 @@ public class ControllerGrabObject : MonoBehaviour {
             Debug.Log("get food");
         }
 
-        Debug.Log(other.tag);
         if(other.tag == "Trap")
         {
             if(Controller.GetHairTriggerDown())
@@ -57,6 +69,14 @@ public class ControllerGrabObject : MonoBehaviour {
                 LevelOne.GetIns().wolfSaved = true;
             }
         }
+
+        if(other.GetComponent<WolfController>())
+        {
+            other.GetComponent<WolfController>().Stun = true;
+            attackedTime = Time.time;
+            attacked = true;
+        }
+
     }
 
     // 2

@@ -28,6 +28,7 @@ public class LevelOne : MonoBehaviour {
         instance = this;
         wolf.GetComponent<WolfController>().Action = true;
         wolf.GetComponent<LookAt>().Target = player.transform;
+        wolf.GetComponent<AudioSource>().Play();
 	}
 	
 	// Update is called once per frame

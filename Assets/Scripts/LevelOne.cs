@@ -6,18 +6,26 @@ using MalbersAnimations.Utilities;
 
 public class LevelOne : MonoBehaviour {
 
+    static LevelOne instance;
     public GameObject wolf;
     public GameObject player;
 
     public bool wolfSaved = false;
-    public GameObject trap;
+    public GameObject trap, trapOpen;
 
     public bool wolfFailed = false;
     public GameObject leave;
 
 
+    public static LevelOne GetIns()
+    {
+        return instance;
+    }
+
+
 	// Use this for initialization
 	void Start () {
+        instance = this;
         wolf.GetComponent<WolfController>().Action = true;
         wolf.GetComponent<LookAt>().Target = player.transform;
 	}
@@ -35,6 +43,7 @@ public class LevelOne : MonoBehaviour {
                 wolf.GetComponent<AnimalAIControl>().target = player.transform;
                 wolf.GetComponent<WolfController>().Action = false;
                 trap.SetActive(false);
+                trapOpen.SetActive(true);
                 wolf.GetComponent<WolfController>().Attack1 = true;    
             }
             else if(count == 1)

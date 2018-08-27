@@ -48,6 +48,14 @@ public class ControllerGrabObject : MonoBehaviour {
             GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood();
             Debug.Log("get food");
         }
+
+        if(other.tag == "Trap")
+        {
+            if(Controller.GetHairTriggerDown())
+            {
+                LevelOne.GetIns().wolfSaved = true;
+            }
+        }
     }
 
     // 2

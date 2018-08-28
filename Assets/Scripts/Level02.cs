@@ -12,6 +12,7 @@ public class Level02 : MonoBehaviour {
     public Stack<GameObject> targetStack;
     public bool wolfEat;
     public int num = 0;
+    public bool isSucceed = false;
     //static public Level02 instance;
 
 	// Use this for initialization
@@ -38,6 +39,7 @@ public class Level02 : MonoBehaviour {
         Destroy(food);
         wolf.GetComponent<AnimalAIControl>().SetTarget(player.transform);
         targetStack.Pop();
+        num++;
     }
    
    
@@ -49,6 +51,9 @@ public class Level02 : MonoBehaviour {
             wolf.SetActive(true);
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }
-        
+        if (num >= 7)
+        {
+            isSucceed = true;
+        }
     }
 }

@@ -51,7 +51,7 @@ public class Level02 : MonoBehaviour {
         {
             targetStack.Push(player.gameObject);
         }
-        if (pickUpFood )
+        if (pickUpFood && targetStack.Count>0 )
         {
             wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().gameObject.transform);
             wolf.SetActive(true);

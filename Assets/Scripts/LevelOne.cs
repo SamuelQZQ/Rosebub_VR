@@ -66,12 +66,13 @@ public class LevelOne : MonoBehaviour {
         {
             fightTime += Time.deltaTime;
             wolf.GetComponent<AnimalAIControl>().target = leave.transform;
+            if (fightTime > 10)
+            {
+                SceneManager.LoadScene("MainScene_2");
+            }
         }
 
-        if (fightTime > 10)
-        {
-            SceneManager.LoadScene("MainScene_2");
-        }
+
 	}
 
     private void OnTriggerEnter(Collider other)

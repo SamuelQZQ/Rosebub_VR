@@ -33,11 +33,13 @@ public class LevelOne : MonoBehaviour {
 	
 	// Update is called once per frame
     int count = 0;
+    float fightTime = 0;
 	void Update () {
 		
 
         if(wolfSaved)
         {
+            fightTime += Time.deltaTime;
             if(count == 0)
             {
                 count++;
@@ -54,6 +56,7 @@ public class LevelOne : MonoBehaviour {
 
         }
 
+        if (fightTime > 60) wolfFailed = true;
         if(wolfFailed)
         {
             wolf.GetComponent<AnimalAIControl>().target = leave.transform;

@@ -36,15 +36,20 @@ public class Level02 : MonoBehaviour {
     //}
     public void destroyFood()
     {
-        Destroy(food);
+        food = targetStack.Peek();
         wolf.GetComponent<AnimalAIControl>().SetTarget(player.transform);
         targetStack.Pop();
         num++;
+        Destroy(food);
     }
    
    
 	// Update is called once per frame
 	void Update () {
+        if (targetStack.Count == 0)
+        {
+            targetStack.Push(player.gameObject);
+        }
         if (pickUpFood )
         {
             wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().gameObject.transform);

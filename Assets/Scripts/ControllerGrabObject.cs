@@ -8,6 +8,8 @@ public class ControllerGrabObject : MonoBehaviour {
     public GameObject Food;
     public GameObject control;
 
+    public float stunTime;
+
     private SteamVR_TrackedObject trackedObj;
 
     // 1
@@ -43,7 +45,7 @@ public class ControllerGrabObject : MonoBehaviour {
     float attackedTime = 0;
     private void LateUpdate()
     {
-        if (attacked && Time.time - attackedTime >= 1)
+        if (attacked && Time.time - attackedTime >= stunTime)
         {
             attacked = false;
             GameObject.Find("Wolf Cub").GetComponent<WolfController>().Stun = false;

@@ -70,4 +70,4 @@ public class Level02 : MonoBehaviour {
             SceneManager.LoadScene("level3");//括号内加入场景名字
     }
 }
-}
+

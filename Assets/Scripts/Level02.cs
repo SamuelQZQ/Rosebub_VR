@@ -14,6 +14,7 @@ public class Level02 : MonoBehaviour {
     public int num = 0;
     public bool isSucceed = false;
     float time = 0;
+    public float timing = 0;
     //static public Level02 instance;
 
 	// Use this for initialization
@@ -42,19 +43,25 @@ public class Level02 : MonoBehaviour {
         targetStack.Pop();
         num++;
         Destroy(food);
+        Debug.Log("DES");
     }
    
    
 	// Update is called once per frame
 	void Update () {
+        timing += Time.deltaTime;
+        Debug.Log(timing);
         if (targetStack.Count == 0)
         {
             targetStack.Push(player.gameObject);
         }
-        if (pickUpFood && targetStack.Count>0 )
+        if (pickUpFood   )
         {
-            wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().gameObject.transform);
-            wolf.SetActive(true);
+            if (targetStack.Count > 0)
+            {
+                wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().gameObject.transform);
+                wolf.SetActive(true);
+            }
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }
         if (num >= 7)
@@ -66,8 +73,10 @@ public class Level02 : MonoBehaviour {
         {
             time += Time.deltaTime;
         }
-        if(time>=3)
+        if (time >= 3 || timing>90 )
+        {
             SceneManager.LoadScene("level3");//括号内加入场景名字
+        }
     }
 }
 

@@ -10,7 +10,7 @@ public class CountDown : MonoBehaviour {
     private float totalTime1 = 15;
     private float intervalTime = 1;
     //l狼逃跑的时间间隔
-    private float runTime = 3;
+    private float runTime = 5;
 
 
     
@@ -33,7 +33,7 @@ public class CountDown : MonoBehaviour {
         CountDown1Text.text = string.Format("逃离剩余时间 {0:d2}:{1:d2}", (int)totalTime1 / 60, (int)totalTime1 % 60);
         //找到要隐藏的大狼对象
         root = GameObject.Find("Attacker Wolves/WolfObject/WolfWhiteMagic");
-        point = GameObject.Find("Player/point");
+        point = GameObject.Find("point");
         player = GameObject.Find("Player");
         AI = GameObject.FindGameObjectsWithTag("Wolf");
         escapePoint = GameObject.FindGameObjectsWithTag("escapePoint");
@@ -68,8 +68,9 @@ public class CountDown : MonoBehaviour {
             {
 
                 distance = Vector3.Distance(point.transform.position, root.transform.position);
+                Debug.Log(distance);
                 //狼到达后 坏狼跑走
-                if (distance < 1)
+                if (distance < 3)
                 {
                     Debug.Log("到达目的地");
                     for (int i = 0; i < AI.Length; i++)

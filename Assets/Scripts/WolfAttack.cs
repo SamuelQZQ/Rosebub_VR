@@ -14,10 +14,6 @@ public class WolfAttack : MonoBehaviour {
             wolf.Attack1 = true;    
         }
 
-        if (collision.collider.tag == "Hand")
-        {
-            GetComponent<Rigidbody>().AddForce(collision.relativeVelocity * power);
-        }
     }
 
     private void OnCollisionExit(Collision collision)

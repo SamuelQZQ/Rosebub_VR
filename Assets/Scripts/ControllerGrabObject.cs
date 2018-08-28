@@ -8,7 +8,8 @@ public class ControllerGrabObject : MonoBehaviour {
     public GameObject Food;
     public GameObject control;
 
-    public float stunTime;
+    public float stunTime, minVelAttack;
+
 
     private SteamVR_TrackedObject trackedObj;
 
@@ -59,14 +60,6 @@ public class ControllerGrabObject : MonoBehaviour {
         SetCollidingObject(other);
        // Debug.Log("get");
 
-        if(other.GetComponentInParent<WolfController>())
-        {
-            Debug.Log("Attcked");
-            other.GetComponentInParent<WolfController>().Stun = true;
-            attackedTime = Time.time;
-            attacked = true;
-        }
-
         if (other.tag == "Trap")
         {
             if (Controller.GetHairTriggerDown())
@@ -77,6 +70,18 @@ public class ControllerGrabObject : MonoBehaviour {
 
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        Collider other = collision.collider;
+        if (other.GetComponentInParent<WolfController>() && LevelOne.GetIns().wolfSaved && 
+            collision.relativeVelocity.magnitude > minVelAttack)
+        {
+            Debug.Log("Attcked");
+            other.GetComponentInParent<WolfController>().Stun = true;
+            attackedTime = Time.time;
+            attacked = true;
+        }
+    }
 
     // 2
     public void OnTriggerStay(Collider other)

@@ -48,7 +48,8 @@ public class LevelOne : MonoBehaviour {
                 wolf.GetComponent<WolfController>().Action = false;
                 trap.SetActive(false);
                 trapOpen.SetActive(true);
-                wolf.GetComponent<WolfController>().Attack1 = true;    
+                wolf.GetComponent<WolfController>().Attack1 = true;  
+                wolf.GetComponent<AudioSource>().Stop();
             }
             else if(count == 1)
             {

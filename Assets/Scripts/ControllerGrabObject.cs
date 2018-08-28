@@ -67,6 +67,14 @@ public class ControllerGrabObject : MonoBehaviour {
             attacked = true;
         }
 
+        if (other.tag == "Trap")
+        {
+            if (Controller.GetHairTriggerDown())
+            {
+                LevelOne.GetIns().wolfSaved = true;
+            }
+        }
+
     }
 
 
@@ -74,7 +82,7 @@ public class ControllerGrabObject : MonoBehaviour {
     public void OnTriggerStay(Collider other)
     {
         SetCollidingObject(other);
-
+        Debug.Log(other.tag);
         if (other.tag == "Trap")
         {
             if (Controller.GetHairTriggerDown())

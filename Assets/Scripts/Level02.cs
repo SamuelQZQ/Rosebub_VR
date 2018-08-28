@@ -9,6 +9,7 @@ public class Level02 : MonoBehaviour {
     public GameObject food;
     public GameObject wolf;
     public bool pickUpFood;
+    public Stack<GameObject> targetStack;
     public bool wolfEat;
     public int num = 0;
     //static public Level02 instance;
@@ -19,11 +20,14 @@ public class Level02 : MonoBehaviour {
         pickUpFood = false;
         wolfEat = false;
         //wolf = GameObject.FindGameObjectWithTag("Wolf");
+        player = GameObject.FindGameObjectWithTag("Player");
+        targetStack.Push(player);
 	}
 	
     public void getFood(GameObject foo){
         food = foo;
         pickUpFood = true;
+        targetStack.Push(foo);
     }
     //static public Level02 GetInstance()
     //{
@@ -33,6 +37,7 @@ public class Level02 : MonoBehaviour {
     {
         Destroy(food);
         wolf.GetComponent<AnimalAIControl>().SetTarget(player.transform);
+        targetStack.Pop();
     }
    
    
@@ -40,7 +45,7 @@ public class Level02 : MonoBehaviour {
 	void Update () {
         if (pickUpFood )
         {
-            wolf.GetComponent<AnimalAIControl>().SetTarget(food.transform);
+            wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().transform);
             wolf.SetActive(true);
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }

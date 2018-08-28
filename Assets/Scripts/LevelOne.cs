@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MalbersAnimations;
 using MalbersAnimations.Utilities;
+using UnityEngine.SceneManagement;
 
 public class LevelOne : MonoBehaviour {
 
@@ -56,10 +57,20 @@ public class LevelOne : MonoBehaviour {
 
         }
 
-        if (fightTime > 60) wolfFailed = true;
+        if (fightTime > 60) 
+        {
+            wolfFailed = true;
+            fightTime = 0;
+        }
         if(wolfFailed)
         {
+            fightTime += Time.deltaTime;
             wolf.GetComponent<AnimalAIControl>().target = leave.transform;
+        }
+
+        if (fightTime > 10)
+        {
+            SceneManager.LoadScene("MainScene_2");
         }
 	}
 

@@ -59,6 +59,7 @@ public class Level02 : MonoBehaviour {
         if (num >= 7)
         {
             isSucceed = true;
+            Debug.Log("succeed");
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MalbersAnimations;
-
+using UnityEngine.SceneManagement;
 public class Level02 : MonoBehaviour {
     public GameObject player;
     public GameObject playerHand;
@@ -13,6 +13,7 @@ public class Level02 : MonoBehaviour {
     public bool wolfEat;
     public int num = 0;
     public bool isSucceed = false;
+    float time = 0;
     //static public Level02 instance;
 
 	// Use this for initialization
@@ -61,5 +62,12 @@ public class Level02 : MonoBehaviour {
             isSucceed = true;
             Debug.Log("succeed");
         }
+        if (isSucceed)
+        {
+            time += Time.deltaTime;
+        }
+        if(time>=3)
+            SceneManager.LoadScene("level3");//括号内加入场景名字
     }
+}
 }

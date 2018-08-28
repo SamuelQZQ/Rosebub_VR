@@ -10,7 +10,7 @@ public class CountDown : MonoBehaviour {
     private float totalTime1 = 15;
     private float intervalTime = 1;
     //l狼逃跑的时间间隔
-    private float runTime = 6;
+    private float runTime = 3;
 
 
     
@@ -71,6 +71,7 @@ public class CountDown : MonoBehaviour {
                 //狼到达后 坏狼跑走
                 if (distance < 1)
                 {
+                    Debug.Log("到达目的地");
                     for (int i = 0; i < AI.Length; i++)
                     {
                         AI[i].GetComponent<NavMeshAgent>().speed = 0.0f;
@@ -79,6 +80,10 @@ public class CountDown : MonoBehaviour {
                 }
 
             }  
+        }
+        if (root.GetComponent<WolfController>().Action)
+        {
+            root.GetComponent<WolfController>().Action = false;
         }
         //好狼到了，倒计时坏狼逃跑
         if (WolfArrive)

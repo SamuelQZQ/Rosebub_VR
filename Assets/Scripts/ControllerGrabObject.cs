@@ -5,6 +5,11 @@ using UnityEngine;
 public class ControllerGrabObject : MonoBehaviour {
 
     // Use this for initialization
+    public GameObject Food;
+    public GameObject control;
+
+    public float stunTime;
+
     private SteamVR_TrackedObject trackedObj;
 
     // 1
@@ -20,6 +25,9 @@ public class ControllerGrabObject : MonoBehaviour {
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
+        control = GameObject.FindGameObjectWithTag("control");
+        Food = GameObject.FindGameObjectWithTag("Food");
+            
     }
     private void SetCollidingObject(Collider col)
     {
@@ -32,16 +40,48 @@ public class ControllerGrabObject : MonoBehaviour {
         collidingObject = col.gameObject;
     }
 
+
+    bool attacked = false;
+    float attackedTime = 0;
+    private void LateUpdate()
+    {
+        if (attacked && Time.time - attackedTime >= stunTime)
+        {
+            attacked = false;
+            GameObject.Find("Wolf Cub").GetComponent<WolfController>().Stun = false;
+        }
+     
+    }
+
     // 1
     public void OnTriggerEnter(Collider other)
     {
         SetCollidingObject(other);
+       // Debug.Log("get");
+
+        if(other.GetComponentInParent<WolfController>())
+        {
+            Debug.Log("Attcked");
+            other.GetComponentInParent<WolfController>().Stun = true;
+            attackedTime = Time.time;
+            attacked = true;
+        }
+
     }
+
 
     // 2
     public void OnTriggerStay(Collider other)
     {
         SetCollidingObject(other);
+
+        if (other.tag == "Trap")
+        {
+            if (Controller.GetHairTriggerDown())
+            {
+                LevelOne.GetIns().wolfSaved = true;
+            }
+        }
     }
 
     // 3
@@ -75,6 +115,7 @@ public class ControllerGrabObject : MonoBehaviour {
 
     private void ReleaseObject()
     {
+        
         // 1
         if (GetComponent<FixedJoint>())
         {
@@ -97,6 +138,16 @@ public class ControllerGrabObject : MonoBehaviour {
             if (collidingObject)
             {
                 GrabObject();
+                if (objectInHand.gameObject.tag == "Food")
+                {
+
+
+                    GameObject.FindGameObjectWithTag("control").GetComponent<Level02>().getFood(objectInHand.gameObject);
+                    Debug.Log("get food");
+
+                }
+                
+                
             }
         }
 

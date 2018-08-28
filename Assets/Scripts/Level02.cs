@@ -9,7 +9,7 @@ public class Level02 : MonoBehaviour {
     public GameObject food;
     public GameObject wolf;
     public bool pickUpFood;
-    public Stack<GameObject> targetStack;
+    public Stack<GameObject> targetStack = new Stack<GameObject>();
     public bool wolfEat;
     public int num = 0;
     public bool isSucceed = false;
@@ -22,13 +22,13 @@ public class Level02 : MonoBehaviour {
         wolfEat = false;
         //wolf = GameObject.FindGameObjectWithTag("Wolf");
         player = GameObject.FindGameObjectWithTag("Player");
-        targetStack.Push(player);
+        targetStack.Push(player.gameObject);
 	}
 	
     public void getFood(GameObject foo){
         food = foo;
         pickUpFood = true;
-        targetStack.Push(foo);
+        targetStack.Push(foo.gameObject);
     }
     //static public Level02 GetInstance()
     //{
@@ -47,7 +47,7 @@ public class Level02 : MonoBehaviour {
 	void Update () {
         if (pickUpFood )
         {
-            wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().transform);
+            wolf.GetComponent<AnimalAIControl>().SetTarget(targetStack.Peek().gameObject.transform);
             wolf.SetActive(true);
                                                                                                                                                                                                                                                                                                                                                                                                                                                         
         }

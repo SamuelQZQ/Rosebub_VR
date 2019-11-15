@@ -1,3 +1,3 @@
 # Rosebub_VR
 
-A VR game Called Rosebub, developed with Unity.
+A VR game Called Rosebub, with a story about wolf and human. Developed with Unity.
